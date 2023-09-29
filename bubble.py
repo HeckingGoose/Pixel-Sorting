@@ -55,4 +55,7 @@ def SortIndex(asorted, direction, loop = 0, debug = False):
                     temp = indices[ind]
                     indices[ind] = indices[ind-1]
                     indices[ind-1] = temp
+    if direction == 0:
+        for val in range(len(asorted)):
+            asorted[val] = asorted[val] * -1
     return indices
