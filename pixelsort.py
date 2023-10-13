@@ -33,8 +33,7 @@ def SortHor(image, sortType, direction, debug = False):
         for x in range(width):
             newSurf.set_at((x,y), (rR[newOrder[x]], rG[newOrder[x]], rB[newOrder[x]]))
     totalTime = time.time() - startTime
-    if debug:
-        print("Sort took " + str(totalTime) + " seconds.")
+    print("Sort took " + str(totalTime) + " seconds.")
     return newSurf # Return new surface
 
 def SortVer(image, sortType, direction, debug = False):
@@ -70,6 +69,5 @@ def SortVer(image, sortType, direction, debug = False):
         for y in range(height):
             newSurf.set_at((x,y), (rR[newOrder[y]], rG[newOrder[y]], rB[newOrder[y]]))
     totalTime = time.time() - startTime
-    if debug:
-        print("Sort took " + str(totalTime) + " seconds.")
+    print("Sort took " + str(totalTime) + " seconds.")
     return newSurf # Return new surface

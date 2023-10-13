@@ -10,18 +10,31 @@ imageName = "TestImage"
 sortType = "g"
 direction = "ascend"
 debug = False
+maxWidth = 1700
+maxHeight = 800
 
 # Load image
 image = pygame.image.load(imageName + ".png")
 
+# Calculate values to scale image to
+scaleFactor = 1
+if image.get_width() > maxWidth:
+    if (maxWidth / image.get_width()) * image.get_height() > maxHeight:
+        scaleFactor = maxHeight / image.get_height()
+    else:
+        scaleFactor = maxWidth / image.get_width()
+
 # Create screen and display surface
 screen = pygame.surface.Surface((image.get_width(),image.get_height()))
-display = pygame.display.set_mode((image.get_width(),image.get_height()),0,32)
+display = pygame.display.set_mode((int(image.get_width() *scaleFactor),int(image.get_height() * scaleFactor)),0,32)
 pygame.display.set_caption(imageName + " | Sort Type: " + sortType +" | Direction: " + direction)
 pygame.display.set_icon(image)
 
 # Perform pixel sort
 sortedSurface = pixelsort.SortVer(image, sortType, direction, debug)
+
+#Scale image for display
+displaySurf = pygame.transform.scale(sortedSurface, (int(image.get_width() *scaleFactor),int(image.get_height() * scaleFactor)))
 
 while True:
     clock.tick(12)
@@ -30,6 +43,6 @@ while True:
             pygame.image.save(sortedSurface, "Sorted\\" + imageName + "_sorted(" + sortType + ", " + direction + ", " + direction +").png")
             pygame.quit()
             sys.exit()
-    screen.blit(sortedSurface, (0,0))
+    screen.blit(displaySurf, (0,0))
     display.blit(screen, (0,0))
     pygame.display.update()

@@ -7,7 +7,7 @@ The program can sort across both the x and y axis, with either a descending or a
 #
 ### To do:
 - [x] Replace bubble sort with an algorithm that scales better,
-- [ ] Limit how large the Pygame window can be so that large images do not cover a user's entire screen space,
+- [x] Limit how large the Pygame window can be so that large images do not cover a user's entire screen space,
 - [ ] Implement a system for allowing the window to be resized during runtime, while maintaining its aspect ratio,
 - [ ] Implement support for more sort values,
 
