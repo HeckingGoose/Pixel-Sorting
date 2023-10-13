@@ -1,15 +1,7 @@
-import bubble, time, pygame # import modules
+import sorters, time, pygame # import modules
 
 def SortHor(image, sortType, direction, debug = False):
-    if debug:
-        print()
-        print("---Begin Sort---")
     direction = direction.lower()
-    match direction:
-        case "ascend":
-            direction = 1
-        case "descend":
-            direction = 0
     sortType = sortType.lower()
     startTime = time.time() # useful for calculating how long this took
     width = image.get_width()
@@ -18,6 +10,8 @@ def SortHor(image, sortType, direction, debug = False):
     loop = 0
     for y in range(height): # iterate through every column of the image
         loop += 1
+        if debug:
+            print("Sorting (loop " + str(loop) + ")")
         # Fetch row of pixels as rgb
         rR = []
         rG = []
@@ -29,11 +23,11 @@ def SortHor(image, sortType, direction, debug = False):
         # Sort based on sortType
         match sortType:
             case "r":
-                newOrder = bubble.SortIndex(rR, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rR, direction)
             case "g":
-                newOrder = bubble.SortIndex(rG, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rG, direction)
             case "b":
-                newOrder = bubble.SortIndex(rB, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rB, direction)
 
         # Draw new row to surface
         for x in range(width):
@@ -45,11 +39,6 @@ def SortHor(image, sortType, direction, debug = False):
 
 def SortVer(image, sortType, direction, debug = False):
     direction = direction.lower()
-    match direction:
-        case "ascend":
-            direction = 1
-        case "descend":
-            direction = 0
     sortType = sortType.lower()
     startTime = time.time() # useful for calculating how long this took
     width = image.get_width()
@@ -58,6 +47,8 @@ def SortVer(image, sortType, direction, debug = False):
     loop = 0
     for x in range(width): # iterate through every row of the image
         loop += 1
+        if debug:
+            print("Sorting (loop " + str(loop) + ")")
         # Fetch column of pixels as rgb
         rR = []
         rG = []
@@ -69,11 +60,11 @@ def SortVer(image, sortType, direction, debug = False):
         # Sort based on sortType
         match sortType:
             case "r":
-                newOrder = bubble.SortIndex(rR, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rR, direction)
             case "g":
-                newOrder = bubble.SortIndex(rG, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rG, direction)
             case "b":
-                newOrder = bubble.SortIndex(rB, direction, loop, debug)
+                newOrder = sorters.merge.SortIndex(rB, direction)
 
         # Draw new column to surface
         for y in range(height):
