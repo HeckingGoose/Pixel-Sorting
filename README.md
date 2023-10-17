@@ -1,7 +1,7 @@
 # Pixel-Sorting
 **Built for Python 3.10+**
 
-A Python-based program that takes an input image and returns an output image where the pixels have been sorted based on user input.
+A Python-based program that takes an input image and returns an output image where the pixels have been sorted based on a few parameters.
 
 The program can sort across both the x and y axis, with either a descending or ascending sort. The program uses the r, g or b values of each pixel to determine the order of which they are sorted.
 #
