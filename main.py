@@ -23,11 +23,11 @@ if image.get_width() > maxWidth:
         scaleFactor = maxHeight / image.get_height()
     else:
         scaleFactor = maxWidth / image.get_width()
-else:
+if image.get_height() * scaleFactor > maxHeight:
     if (maxHeight / image.get_height()) * image.get_width() > maxWidth:
-        scaleFactor = maxWidth / image.get_height()
+        scaleFactor = maxWidth / image.get_width()
     else:
-        scaleFactor = maxHeight / image.get_width()
+        scaleFactor = maxHeight / image.get_height()
 # Create screen and display surface
 screen = pygame.surface.Surface((image.get_width(),image.get_height()))
 display = pygame.display.set_mode((int(image.get_width() *scaleFactor),int(image.get_height() * scaleFactor)),0,32)
